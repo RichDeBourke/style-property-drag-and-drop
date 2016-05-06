@@ -1,0 +1,47 @@
+/* =======================================================================
+ * property-drag-drop.css
+ * Version: 1.0
+ * Date: 2016/04/29
+ * By: Rich DeBourke
+ * License: MIT
+ * GitHub: https://github.com/RichDeBourke/style-property-drag-and-drop
+ * ======================================================================= */
+
+.dest-can-receive {
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.3);
+    z-index: 90;
+}
+
+.clone {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #ffffff;
+    outline: 1px solid #000000;
+    cursor: move;
+    z-index: 99;
+    touch-action: none;
+}
+
+.droppable {
+}
+
+.dragging {
+    cursor: move;
+}
+
+.draggable {
+    cursor: move;
+    touch-action: none;
+}
+
+.source-highlight {
+   -moz-box-shadow:    inset 0 0 10px #ffffff;
+   -webkit-box-shadow: inset 0 0 10px #ffffff;
+   box-shadow:         inset 0 0 10px #ffffff;
+}
+
+.clone-can-drop {
+    -moz-box-shadow:    inset 0 0 10px #ffffff;
+    -webkit-box-shadow: inset 0 0 10px #ffffff;
+    box-shadow:         inset 0 0 10px #ffffff;
+}
