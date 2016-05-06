@@ -47,6 +47,7 @@ Any element on the page that has the assigned destination class can be a destina
 
 ## Demos
 [Simple demo](http://richdebourke.github.io/style-property-drag-and-drop/index.html) - example of the plugin
+
 [In operation](http://goo.gl/4Huz36) - plugin in use on a website
 
 ## Configuring the plugin
