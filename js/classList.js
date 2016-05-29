@@ -5,6 +5,7 @@
  * Version: 1.1.20150312
  * Date: 2015/03/12
  * By: Eli Grey
+ * Source: https://github.com/eligrey/classList.js/
  * License: Public domain
  * ======================================================================= */
 

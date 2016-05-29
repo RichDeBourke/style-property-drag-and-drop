@@ -80,6 +80,19 @@ This plugin is a fork of Mikael Plate's [jquery-drag-drop-plugin](https://github
 
 The plugin adds a listener to the source elements. At a touchstart or mousedown event, a clone with the required source property is created. The clone can be dragged to a destination element. If the clone is released over a destination element, the designated property is transferred to the destination element.
 
+## Revisions
+#### 1.1 - 2016/05/29
+#### Modified touch events logic
+Version 1.0 used clientX/Y for touch and pageX/Y for mouse events, and adjusted the values using the scroll offset values (this is the way the  source plugin I forked worked).
+
+pageX/Y values are relative to the top left of the document while clientX/Y values should be relative to the top left of the viewport. clientX/Y values plus the scroll offset values should equal the pageX/Y values. The clientX/Y values are important as the plugin uses the elementFromPoint method to find if a target is under the pointer when dragging, and elementFromPoint usually references the top left of the viewport (same as the clientX/Y values) to find an element.
+
+The problem is Chrome for Android (at least Chrome 50.0.2661.89) references the top left of the document for both clientX/Y and elementFromPoint. I created a [jsFiddle]() that, if run in Chrome and a different mobile browser, will show the difference.
+
+To work around the problem, I changed the logic so that the clone position is always based on pageX/Y values and the elementFromPoint is always based on clientX/Y values.
+
+*This change will work so long as Chrome doesn't fix one bug but not the other. If they do fix just one, then a more complex change to the logic will be needed.*
+
 ## Why a new drag & drop plugin
 There are drag & drop plugins on GitHub that have [clone capability](https://github.com/mikeplate/jquery-drag-drop-plugin), but I needed the ability to identify a droppable target that was under another element (a child node). This is why I added code to cycle through the parent nodes to find if a parent node had the `dropTargetClass`.
 
