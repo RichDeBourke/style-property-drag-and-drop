@@ -9,7 +9,8 @@ Style Property Drag and Drop
 * Finding a destination node, even when that node is a parent node (the parent is covered by a child node)
 
 ## Dependencies
-* jQuery 2.x - The plugin only supports newer browsers including IE from version 9 - it does not support IE8 or lower
+* jQuery 2.X or 3.X - The plugin only supports newer browsers including IE from version 9 - it does not support IE8 or lower
+    * The plugin does work with the slim build version of jQuery 3.X
 
 ## Usage
 
@@ -22,7 +23,7 @@ Include the CSS file in the head section:
 Add jQuery, the plugin, and the JavaScript code to initiate the plugin in the body section:
 
 ~~~~ javascript
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.slim.min.js"></script>
 <script src="jquery.property-drag-drop.plugin.js"></script>
 <script>
     $(document).ready(function () {
