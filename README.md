@@ -82,6 +82,11 @@ This plugin is a fork of Mikael Plate's [jquery-drag-drop-plugin](https://github
 The plugin adds a listener to the source elements. At a touchstart or mousedown event, a clone with the required source property is created. The clone can be dragged to a destination element. If the clone is released over a destination element, the designated property is transferred to the destination element.
 
 ## Revisions
+
+#### 2019/05/10
+
+Validated to work with jQuery 3.4.1.
+
 #### 1.1 - 2016/05/29
 #### Modified touch events logic
 Version 1.0 used clientX/Y for touch and pageX/Y for mouse events, and adjusted the values using the scroll offset values (this is the way the  source plugin I forked worked).
