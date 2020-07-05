@@ -83,6 +83,10 @@ The plugin adds a listener to the source elements. At a touchstart or mousedown 
 
 ## Revisions
 
+#### 2020/07/05
+
+Validated to work with jQuery 3.5.1.
+
 #### 2019/05/10
 
 Validated to work with jQuery 3.4.1.
