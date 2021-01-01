@@ -36,6 +36,6 @@ body {
     vertical-align: top;
 }
 
-.test {
+.test, .use-results {
     display: none;
 }

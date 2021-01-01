@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Property Drag &amp; Drop Transfer jQuery Plugin</title>
 
@@ -13,6 +13,7 @@
     <style>
         body {
             font-family: sans-serif;
+            min-height: 100vh;
         }
 
         h1 {
@@ -20,6 +21,14 @@
             font-size: 1.4em;
             font-weight: 400;
             margin: 8px 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #0024a7;
+            font-size: 1.2em;
+            font-weight: 400;
+            margin: 0;
             text-align: center;
         }
 
@@ -66,12 +75,20 @@
         div:last-child {
             margin-right: 0;
         }
+
+        .use-results {
+            width: 500px;
+            height: 30px;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            position: relative;
+        }
     </style>
 
-    <link href="css/property-drag-drop.css" rel="stylesheet" type="text/css">
+    <link href="css/property-drag-drop.css" rel="stylesheet">
 
     <!--[if lte IE 8]>
-        <link href="css/property-drag-drop-IE8.css" rel="stylesheet" type="text/css">
+        <link href="css/property-drag-drop-IE8.css" rel="stylesheet">
     <![endif]-->
 
 </head>
@@ -95,7 +112,7 @@
                         <label for="fc">Input:</label>
                     </td>
                     <td>
-                        <input id="fc" maxlength="6" size="6" type="text" tabindex="1" placeholder="Test" />
+                        <input id="fc" maxlength="6" size="6" type="text" tabindex="1" spellcheck="false" placeholder="Test" autocomplete="off">
                     </td>
                 </tr>
             </table>
@@ -105,6 +122,9 @@
         <div class="yellow test-block draggable droppable">Drag &amp; Drop</div>
         <div class="gray test-block droppable">Drop Only</div>
     </div>
+    <div class="use-results">
+        <h2 id="results">Drop count: 00</h2>
+    </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
@@ -113,30 +133,29 @@
         <script src="js/classList.js" type="text/javascript"></script>
     <![endif]-->
 
+    <script src="js/jquery.propertyDragDrop.js"></script>
     <script>
-        if (window.jQuery) {
-            document.write('<script src="js/jquery.propertyDragDrop.js" type="text/javascript"><\/script>');
-        }
-    </script>
-    <script>
-        if (window.jQuery) {
-            $(document).ready(function () {
-                $(".draggable").propertyDragDrop({
-                    dropTargetClass: "droppable",
-                    sourceHighlightClass: "source-highlight",
-                    cloneClass: "clone",
-                    cloneCanDropClass: "clone-can-drop",
-                    destinationCanReceiveClass: "dest-can-receive",
-                    bodyDraggingClass: "dragging"
-                });
+        var count = 0;
 
-                // stopPropagation enables the mouse or touch to enter an input that is part of a
-                // source element rather than allowing the mouse event to bubble up
-                $(":input").on("mousedown touchstart", function (e) {
-                    e.stopPropagation();
-                });
-            });
+        function handleDropEvent ($src, $dst) {
+            $dst.css("backgroundColor", $src.css("backgroundColor"));
+            count = count + 1;
+            document.getElementById("results").innerHTML = "Drop count: " + (count < 10 ? "0" : "") + count;
         }
+
+        $(".draggable").propertyDragDrop({
+            transferProperty: "backgroundColor",
+            childrenIgnore: "#fc",
+            dropTargetClass: "droppable",
+            sourceHighlightClass: "source-highlight",
+            cloneClass: "clone",
+            cloneWidth: 48,
+            cloneHight: 48,
+            cloneCanDropClass: "clone-can-drop",
+            destinationCanReceiveClass: "dest-can-receive",
+            bodyDraggingClass: "dragging",
+            didDrop: handleDropEvent
+        });
     </script>
 
 </body>
